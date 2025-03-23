@@ -71,3 +71,28 @@ Array<uint32_t, RTC_MIN_PIXELNUM> RTCModeManager::getMinutesToColorArray(
 
   return colorArray;
 }
+
+Array<uint32_t, RTC_SEC_PIXELNUM> RTCModeManager::getSecondsToColorArray(
+  uint16_t hue,
+  uint8_t saturation,
+  uint8_t colorValue
+) {
+  Array<uint32_t, RTC_SEC_PIXELNUM> colorArray;
+  colorArray = {0};
+
+  uint8_t seconds = rtc.now().second();
+  uint8_t place = seconds/10 + 1;
+  uint8_t value = seconds%10;
+
+  for (int i = 0; i < place; i++) {
+    if (i == place-1) {
+      colorArray[(RTC_SEC_PIXELNUM-1)-i] 
+        = Adafruit_NeoPixel::ColorHSV(hue, saturation, colorValue * (value/10.0f));
+    } else {
+      colorArray[(RTC_SEC_PIXELNUM-1)-i]
+        = Adafruit_NeoPixel::ColorHSV(hue, saturation, colorValue);
+    }
+  }
+
+  return colorArray;
+}

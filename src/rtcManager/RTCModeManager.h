@@ -2,6 +2,7 @@
 
 #define RTC_HOUR_PIXELNUM 12
 #define RTC_MIN_PIXELNUM 13
+#define RTC_SEC_PIXELNUM 6
 
 class RTCModeManager {
   private:
@@ -17,5 +18,10 @@ class RTCModeManager {
       uint32_t n0PlaceColor,
       uint32_t nPlaceColor,
       uint32_t dividerColor
+    );
+    Array<uint32_t, RTC_SEC_PIXELNUM> getSecondsToColorArray(
+      uint16_t hue,
+      uint8_t saturation,
+      uint8_t colorValue
     );
 };
