@@ -33,16 +33,22 @@ void loop() {
 
   uint8_t pixelPlace = 0;
 
-  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(10000, 200, 255));
+  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(10000, 255, 255));
   pixelPlace++;
 
-  Array<uint32_t, RTC_MIN_PIXELNUM> minutePattern = rtcModeManager.getMinutesToColorArray();
+  Array<uint32_t, RTC_MIN_PIXELNUM> minutePattern 
+    = rtcModeManager.getMinutesToColorArray(
+      Adafruit_NeoPixel::ColorHSV(1000, 220, 255),
+      Adafruit_NeoPixel::ColorHSV(1000, 220, 255),
+      Adafruit_NeoPixel::ColorHSV(5000, 255, 255)
+    );
+
   for (size_t i = 0; i < RTC_MIN_PIXELNUM; i++) {
     neoPixel.setPixelColor(pixelPlace, minutePattern[i]);
     pixelPlace++;
   }
 
-  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(10000, 200, 255));
+  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(10000, 255, 255));
   pixelPlace++;
 
   neoPixel.show();
