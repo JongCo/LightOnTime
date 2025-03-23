@@ -45,11 +45,12 @@ Array<uint32_t, RTC_HOUR_PIXELNUM> RTCModeManager::getHoursToColorArray(
 Array<uint32_t, RTC_MIN_PIXELNUM> RTCModeManager::getMinutesToColorArray(
   uint32_t n0PlaceColor,
   uint32_t nPlaceColor,
-  uint32_t dividerColor
+  uint32_t dividerColor,
+  uint32_t offColor
 ) {
 
   Array<uint32_t, RTC_MIN_PIXELNUM> colorArray;
-  colorArray = {0};
+  colorArray = {offColor};
 
   uint8_t minute = rtc.now().minute();
   uint8_t n0Digit = minute/10;
@@ -59,7 +60,7 @@ Array<uint32_t, RTC_MIN_PIXELNUM> RTCModeManager::getMinutesToColorArray(
     if ( n0Digit >> i & 1 ) {
       colorArray[2-i] = n0PlaceColor;
     } else {
-      colorArray[2-i] = Adafruit_NeoPixel::ColorHSV(0, 0, 0);
+      colorArray[2-i] = offColor;
     }
   }
 
@@ -75,10 +76,11 @@ Array<uint32_t, RTC_MIN_PIXELNUM> RTCModeManager::getMinutesToColorArray(
 Array<uint32_t, RTC_SEC_PIXELNUM> RTCModeManager::getSecondsToColorArray(
   uint16_t hue,
   uint8_t saturation,
-  uint8_t colorValue
+  uint8_t colorValue,
+  uint32_t offColor
 ) {
   Array<uint32_t, RTC_SEC_PIXELNUM> colorArray;
-  colorArray = {0};
+  colorArray = {offColor};
 
   uint8_t seconds = rtc.now().second();
   uint8_t place = seconds/10 + 1;

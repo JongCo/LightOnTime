@@ -17,11 +17,13 @@ class RTCModeManager {
     Array<uint32_t, RTC_MIN_PIXELNUM> getMinutesToColorArray(
       uint32_t n0PlaceColor,
       uint32_t nPlaceColor,
-      uint32_t dividerColor
+      uint32_t dividerColor,
+      uint32_t offColor
     );
     Array<uint32_t, RTC_SEC_PIXELNUM> getSecondsToColorArray(
       uint16_t hue,
       uint8_t saturation,
-      uint8_t colorValue
+      uint8_t colorValue,
+      uint32_t offColor
     );
 };
