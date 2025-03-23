@@ -13,8 +13,26 @@ void RTCModeManager::init()
   rtc.begin();
 }
 
-uint8_t RTCModeManager::getHours() {
-  return rtc.now().hour();
+Array<uint32_t, RTC_HOUR_PIXELNUM> RTCModeManager::getHoursToColorArray(
+  uint32_t hourColor,
+  uint32_t offColor
+) {
+  
+  
+  Array<uint32_t, RTC_HOUR_PIXELNUM> colorArray;
+  colorArray = {offColor};
+  
+  uint8_t hour = rtc.now().hour();
+
+  bool isPM = hour >= 12;
+  hour = isPM ? hour - 12 : hour;
+  
+
+  for (int i = 0; i < hour; i++) {
+    colorArray[(RTC_HOUR_PIXELNUM-1)-i] = hourColor;
+  }
+
+  return colorArray;
 }
 
 /**
