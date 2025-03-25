@@ -2,7 +2,7 @@
 #include "Adafruit_NeoPixel.h"
 #include "RTClib.h"
 #include "Array.h"
-#include "rtcManager/RTCModeManager.h"
+#include "RTCModeManager/RTCModeManager.h"
 
 #define NEOPIN 12
 #define NUMPIXELS 60
