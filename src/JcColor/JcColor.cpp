@@ -38,7 +38,7 @@ void Color::fromAdaColor(uint32_t adaColor)
 {
   r = (uint8_t)((adaColor >> 16) & 255);
   g = (uint8_t)((adaColor >> 8) & 255);
-  b = (uint8_t)(adaColor && 255);
+  b = (uint8_t)(adaColor & 255);
 }
 
 void Color::fromHSV(int16_t hue, int8_t saturation, int8_t value)
