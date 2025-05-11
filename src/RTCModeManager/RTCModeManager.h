@@ -1,4 +1,5 @@
 #include "RTClib.h"
+#include "JcColor/JcColor.h"
 
 #define RTC_HOUR_PIXELNUM 12
 #define RTC_MIN_PIXELNUM 13

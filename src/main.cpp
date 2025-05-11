@@ -98,8 +98,14 @@ void loop() {
   nextPixel(&pixelPlace, isReverseMode);
 
   // seconds
+  // for (size_t i = 0; i < RTC_SEC_PIXELNUM; i++) {
+  //   neoPixel.setPixelColor(pixelPlace, secondsPattern[i]);
+  //   nextPixel(&pixelPlace, isReverseMode);
+  // }
+
+  // seconds for JcColor Test
   for (size_t i = 0; i < RTC_SEC_PIXELNUM; i++) {
-    neoPixel.setPixelColor(pixelPlace, secondsPattern[i]);
+    neoPixel.setPixelColor(pixelPlace, secondsJcColorPattern[i].toAdaColor());
     nextPixel(&pixelPlace, isReverseMode);
   }
 

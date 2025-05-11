@@ -2,7 +2,6 @@
 #include "RTClib.h"
 #include "Array.h"
 #include "Adafruit_NeoPixel.h"
-#include "JcColor/JcColor.h"
 #include "RTCModeManager.h"
 
 RTCModeManager::RTCModeManager() {
