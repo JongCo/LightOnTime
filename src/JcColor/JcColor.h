@@ -6,15 +6,18 @@ struct Color{
   uint8_t g;
   uint8_t b;
 
-  static Color RGB(uint8_t r, uint8_t g, uint8_t b);
-  static Color AdaColor(int32_t adaColor);
-  static Color HSV(uint16_t hue, int8_t saturation, int8_t value);
+  Color operator+(const Color& other) const;
+  Color operator*(float scalar) const;
+
+  static Color FromRGB(uint8_t r, uint8_t g, uint8_t b);
+  static Color FromAdaColor(int32_t adaColor);
+  static Color FromHSV(uint16_t hue, int8_t saturation, int8_t value);
+
+  static Color Lerp(const Color& a, const Color& b, float t);
 
   uint32_t toAdaColor() const;
   void fromAdaColor(uint32_t adaColor);
   void fromHSV(int16_t hue, int8_t saturation, int8_t value);
-
-
 };
 
 static const uint8_t PROGMEM _adjustedGamma22Table[256] = {
