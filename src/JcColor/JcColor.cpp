@@ -61,7 +61,7 @@ Color Color::FromHSV(uint16_t hue, int8_t saturation, int8_t value)
   return color;
 }
 
-Color Color::Lerp(const Color& a, const Color& b, float t)
+Color Color::lerp(const Color& a, const Color& b, float t)
 {
   t = t < 0 ? 0 : t;
   t = t > 1 ? 1 : t;

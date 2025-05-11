@@ -13,7 +13,7 @@ struct Color{
   static Color FromAdaColor(int32_t adaColor);
   static Color FromHSV(uint16_t hue, int8_t saturation, int8_t value);
 
-  static Color Lerp(const Color& a, const Color& b, float t);
+  static Color lerp(const Color& a, const Color& b, float t);
 
   uint32_t toAdaColor() const;
   void fromAdaColor(uint32_t adaColor);

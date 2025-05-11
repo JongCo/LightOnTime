@@ -8,6 +8,8 @@
 #define NEOPIN 12
 #define NUMPIXELS 60
 
+#define DELAY_MILIES 16
+
 const Color DIVIDER_COLOR = Color::FromHSV(16000, 255, 127);
 
 Adafruit_NeoPixel neoPixel(NUMPIXELS, NEOPIN, NEO_GRB + NEO_KHZ800);
@@ -20,6 +22,7 @@ RTCModeManager rtcModeManager;
 bool isReverseMode = true;
 
 void nextPixel(uint8_t* indexRef, bool isReverseMode);
+void transitColor(Color* currentColors, Color* targetColors);
 
 void setup() {
   neoPixel.begin();
@@ -104,13 +107,13 @@ void loop() {
   nextPixel(&pixelPlace, isReverseMode);
 
 
-
+  transitColor(colors, targetColors);
   for (size_t i = 0; i < NUMPIXELS; i++) {
-    neoPixel.setPixelColor(i, targetColors[i].toAdaColor());
+    neoPixel.setPixelColor(i, colors[i].toAdaColor());
   }
   neoPixel.show();
 
-  delay(50);
+  delay(DELAY_MILIES);
 }
 
 void nextPixel(uint8_t* indexRef, bool isReverseMode) {
@@ -118,5 +121,12 @@ void nextPixel(uint8_t* indexRef, bool isReverseMode) {
     *indexRef = *indexRef-1;
   } else {
     *indexRef = *indexRef+1;
+  }
+}
+
+void transitColor(Color *currentColors, Color *targetColors)
+{
+  for(size_t i = 0; i < NUMPIXELS; i++) {
+    currentColors[i] = Color::lerp(currentColors[i], targetColors[i], 0.05f);
   }
 }
