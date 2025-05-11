@@ -8,6 +8,8 @@
 #define NEOPIN 12
 #define NUMPIXELS 60
 
+const Color DIVIDER_COLOR = Color::HSV(49000, 255, 50);
+
 Adafruit_NeoPixel neoPixel(NUMPIXELS, NEOPIN, NEO_GRB + NEO_KHZ800);
 
 uint32_t colors[60];
@@ -62,7 +64,7 @@ void loop() {
   ); 
   
   // divider
-  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(16000, 255, 50));
+  neoPixel.setPixelColor(pixelPlace, DIVIDER_COLOR.toAdaColor());
   nextPixel(&pixelPlace, isReverseMode);
 
   // hours
@@ -72,10 +74,10 @@ void loop() {
   }
 
   // divider
-  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(16000, 255, 50));
+  neoPixel.setPixelColor(pixelPlace, DIVIDER_COLOR.toAdaColor());
   nextPixel(&pixelPlace, isReverseMode);
   // divider
-  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(16000, 255, 50));
+  neoPixel.setPixelColor(pixelPlace, DIVIDER_COLOR.toAdaColor());
   nextPixel(&pixelPlace, isReverseMode);
 
   // minutes
@@ -85,10 +87,10 @@ void loop() {
   }
 
   // divider
-  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(16000, 255, 50));
+  neoPixel.setPixelColor(pixelPlace, DIVIDER_COLOR.toAdaColor());
   nextPixel(&pixelPlace, isReverseMode);
   // divider
-  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(16000, 255, 50));
+  neoPixel.setPixelColor(pixelPlace, DIVIDER_COLOR.toAdaColor());
   nextPixel(&pixelPlace, isReverseMode);
 
   // seconds
@@ -98,7 +100,7 @@ void loop() {
   }
 
   // divider
-  neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(16000, 255, 50));
+  neoPixel.setPixelColor(pixelPlace, DIVIDER_COLOR.toAdaColor());
   nextPixel(&pixelPlace, isReverseMode);
 
   neoPixel.show();
