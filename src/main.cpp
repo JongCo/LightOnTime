@@ -127,6 +127,6 @@ void nextPixel(uint8_t* indexRef, bool isReverseMode) {
 void transitColor(Color *currentColors, Color *targetColors)
 {
   for(size_t i = 0; i < NUMPIXELS; i++) {
-    currentColors[i] = Color::lerp(currentColors[i], targetColors[i], 0.05f);
+    currentColors[i] = Color::lerp(currentColors[i], targetColors[i], 0.1f);
   }
 }
