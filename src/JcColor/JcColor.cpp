@@ -24,7 +24,7 @@ Color Color::HSV(uint16_t hue, int8_t saturation, int8_t value)
   return color;
 }
 
-uint32_t Color::toAdaColor()
+uint32_t Color::toAdaColor() const
 {
   // return Adafruit_NeoPixel::gamma32(Adafruit_NeoPixel::Color(r, g, b));
   return Adafruit_NeoPixel::Color(

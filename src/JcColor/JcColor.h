@@ -10,7 +10,7 @@ struct Color{
   static Color AdaColor(int32_t adaColor);
   static Color HSV(uint16_t hue, int8_t saturation, int8_t value);
 
-  uint32_t toAdaColor();
+  uint32_t toAdaColor() const;
   void fromAdaColor(uint32_t adaColor);
   void fromHSV(int16_t hue, int8_t saturation, int8_t value);
 
