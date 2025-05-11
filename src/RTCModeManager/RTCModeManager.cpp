@@ -115,13 +115,9 @@ Array<Color, RTC_SEC_PIXELNUM> RTCModeManager::getSecondsToJcColorArray(
 
   for (int i = 0; i < place; i++) {
     if (i == place-1) {
-      Color secColor;
-      secColor.fromHSV(hue, saturation, colorValue * (value/10.0f));
-      colorArray[(RTC_SEC_PIXELNUM-1)-i] = secColor;
+      colorArray[(RTC_SEC_PIXELNUM-1)-i] = Color::HSV(hue, saturation, colorValue * (value/10.0f));
     } else {
-      Color secColor;
-      secColor.fromHSV(hue, saturation, colorValue);
-      colorArray[(RTC_SEC_PIXELNUM-1)-i] = secColor;
+      colorArray[(RTC_SEC_PIXELNUM-1)-i] = Color::HSV(hue, saturation, colorValue);
     }
   }
 

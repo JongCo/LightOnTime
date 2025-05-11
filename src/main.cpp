@@ -3,6 +3,7 @@
 #include "RTClib.h"
 #include "Array.h"
 #include "RTCModeManager/RTCModeManager.h"
+#include "JcColor/JcColor.h"
 
 #define NEOPIN 12
 #define NUMPIXELS 60
@@ -60,6 +61,11 @@ void loop() {
       1000, 255, 255,
       Adafruit_NeoPixel::ColorHSV(49000, 140, 20)
   );
+
+  Array<Color, RTC_SEC_PIXELNUM> secondsJcColorPattern
+    = rtcModeManager.getSecondsToJcColorArray(
+      1000, 255, 255, Color::HSV(49000, 140, 20)
+  ); 
   
   // divider
   neoPixel.setPixelColor(pixelPlace, Adafruit_NeoPixel::ColorHSV(16000, 255, 50));
