@@ -87,9 +87,9 @@ Array<Color, RTC_SEC_PIXELNUM> RTCModeManager::getSecondsToColorArray(
 
   for (int i = 0; i < place; i++) {
     if (i == place-1) {
-      colorArray[(RTC_SEC_PIXELNUM-1)-i] = Color::HSV(hue, saturation, colorValue * (value/10.0f));
+      colorArray[(RTC_SEC_PIXELNUM-1)-i] = Color::FromHSV(hue, saturation, colorValue * (value/10.0f));
     } else {
-      colorArray[(RTC_SEC_PIXELNUM-1)-i] = Color::HSV(hue, saturation, colorValue);
+      colorArray[(RTC_SEC_PIXELNUM-1)-i] = Color::FromHSV(hue, saturation, colorValue);
     }
   }
 
