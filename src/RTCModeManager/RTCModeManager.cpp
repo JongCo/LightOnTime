@@ -13,13 +13,12 @@ void RTCModeManager::init()
   rtc.begin();
 }
 
-Array<uint32_t, RTC_HOUR_PIXELNUM> RTCModeManager::getHoursToColorArray(
-  uint32_t hourColor,
-  uint32_t offColor
+Array<Color, RTC_HOUR_PIXELNUM> RTCModeManager::getHoursToColorArray(
+  Color hourColor,
+  Color offColor
 ) {
-  
-  
-  Array<uint32_t, RTC_HOUR_PIXELNUM> colorArray;
+
+  Array<Color, RTC_HOUR_PIXELNUM> colorArray;
   colorArray = {offColor};
   
   uint8_t hour = rtc.now().hour();
@@ -36,20 +35,20 @@ Array<uint32_t, RTC_HOUR_PIXELNUM> RTCModeManager::getHoursToColorArray(
 }
 
 /**
- * @brief Returns the current minutes as an array of Adafruit_NeoPixel::Color
+ * @brief Returns the current minutes as an array of Color
  * 
  * xxxDnnnnnnnnn (x : tens place(binary), D : divider, n : ones place)
  * 
- * @return An array of uint32_t representing the current minute
+ * @return An array of Color representing the current minute
  */
-Array<uint32_t, RTC_MIN_PIXELNUM> RTCModeManager::getMinutesToColorArray(
-  uint32_t n0PlaceColor,
-  uint32_t nPlaceColor,
-  uint32_t dividerColor,
-  uint32_t offColor
+Array<Color, RTC_MIN_PIXELNUM> RTCModeManager::getMinutesToColorArray(
+  Color n0PlaceColor,
+  Color nPlaceColor,
+  Color dividerColor,
+  Color offColor
 ) {
 
-  Array<uint32_t, RTC_MIN_PIXELNUM> colorArray;
+  Array<Color, RTC_MIN_PIXELNUM> colorArray;
   colorArray = {offColor};
 
   uint8_t minute = rtc.now().minute();
@@ -73,33 +72,7 @@ Array<uint32_t, RTC_MIN_PIXELNUM> RTCModeManager::getMinutesToColorArray(
   return colorArray;
 }
 
-Array<uint32_t, RTC_SEC_PIXELNUM> RTCModeManager::getSecondsToColorArray(
-  uint16_t hue,
-  uint8_t saturation,
-  uint8_t colorValue,
-  uint32_t offColor
-) {
-  Array<uint32_t, RTC_SEC_PIXELNUM> colorArray;
-  colorArray = {offColor};
-
-  uint8_t seconds = rtc.now().second();
-  uint8_t place = seconds/10 + 1;
-  uint8_t value = seconds%10;
-
-  for (int i = 0; i < place; i++) {
-    if (i == place-1) {
-      colorArray[(RTC_SEC_PIXELNUM-1)-i] 
-        = Adafruit_NeoPixel::ColorHSV(hue, saturation, colorValue * (value/10.0f));
-    } else {
-      colorArray[(RTC_SEC_PIXELNUM-1)-i]
-        = Adafruit_NeoPixel::ColorHSV(hue, saturation, colorValue);
-    }
-  }
-
-  return colorArray;
-}
-
-Array<Color, RTC_SEC_PIXELNUM> RTCModeManager::getSecondsToJcColorArray(
+Array<Color, RTC_SEC_PIXELNUM> RTCModeManager::getSecondsToColorArray(
   uint16_t hue, 
   uint8_t saturation,
   uint8_t colorValue,

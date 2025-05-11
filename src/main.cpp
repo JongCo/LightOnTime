@@ -42,29 +42,23 @@ void loop() {
     pixelPlace = 0;
   }
 
-  Array<uint32_t, RTC_HOUR_PIXELNUM> hourPattern
+  Array<Color, RTC_HOUR_PIXELNUM> hourPattern
     = rtcModeManager.getHoursToColorArray(
-      Adafruit_NeoPixel::ColorHSV(4000, 255, 255),
-      Adafruit_NeoPixel::ColorHSV(49000, 140, 20)
+      Color::HSV(8000, 255, 255),
+      Color::HSV(49000, 140, 20)
   );
 
-  Array<uint32_t, RTC_MIN_PIXELNUM> minutePattern 
+  Array<Color, RTC_MIN_PIXELNUM> minutePattern 
     = rtcModeManager.getMinutesToColorArray(
-      Adafruit_NeoPixel::ColorHSV(1000, 220, 255),
-      Adafruit_NeoPixel::ColorHSV(1000, 220, 255),
-      Adafruit_NeoPixel::ColorHSV(0, 255, 30),
-      Adafruit_NeoPixel::ColorHSV(49000, 140, 20)
+      Color::HSV(1000, 130, 255),
+      Color::HSV(1000, 130, 255),
+      Color::HSV(0, 255, 30),
+      Color::HSV(49000, 140, 20)
   );
 
-  Array<uint32_t, RTC_SEC_PIXELNUM> secondsPattern
+  Array<Color, RTC_SEC_PIXELNUM> secondsPattern
     = rtcModeManager.getSecondsToColorArray(
-      1000, 255, 255,
-      Adafruit_NeoPixel::ColorHSV(49000, 140, 20)
-  );
-
-  Array<Color, RTC_SEC_PIXELNUM> secondsJcColorPattern
-    = rtcModeManager.getSecondsToJcColorArray(
-      1000, 255, 255, Color::HSV(49000, 140, 20)
+      4000, 255, 255, Color::HSV(49000, 140, 20)
   ); 
   
   // divider
@@ -73,7 +67,7 @@ void loop() {
 
   // hours
   for (size_t i = 0; i < RTC_HOUR_PIXELNUM; i++) {
-    neoPixel.setPixelColor(pixelPlace, hourPattern[i]);
+    neoPixel.setPixelColor(pixelPlace, hourPattern[i].toAdaColor());
     nextPixel(&pixelPlace, isReverseMode);
   }
 
@@ -86,7 +80,7 @@ void loop() {
 
   // minutes
   for (size_t i = 0; i < RTC_MIN_PIXELNUM; i++) {
-    neoPixel.setPixelColor(pixelPlace, minutePattern[i]);
+    neoPixel.setPixelColor(pixelPlace, minutePattern[i].toAdaColor());
     nextPixel(&pixelPlace, isReverseMode);
   }
 
@@ -98,14 +92,8 @@ void loop() {
   nextPixel(&pixelPlace, isReverseMode);
 
   // seconds
-  // for (size_t i = 0; i < RTC_SEC_PIXELNUM; i++) {
-  //   neoPixel.setPixelColor(pixelPlace, secondsPattern[i]);
-  //   nextPixel(&pixelPlace, isReverseMode);
-  // }
-
-  // seconds for JcColor Test
   for (size_t i = 0; i < RTC_SEC_PIXELNUM; i++) {
-    neoPixel.setPixelColor(pixelPlace, secondsJcColorPattern[i].toAdaColor());
+    neoPixel.setPixelColor(pixelPlace, secondsPattern[i].toAdaColor());
     nextPixel(&pixelPlace, isReverseMode);
   }
 
