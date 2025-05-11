@@ -26,4 +26,10 @@ class RTCModeManager {
       uint8_t colorValue,
       uint32_t offColor
     );
+    Array<Color, RTC_SEC_PIXELNUM> getSecondsToJcColorArray(
+      uint16_t hue,
+      uint8_t saturation,
+      uint8_t colorValue,
+      Color offColor
+    );
 };

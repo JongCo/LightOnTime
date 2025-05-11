@@ -1,7 +1,7 @@
 #include "Adafruit_NeoPixel.h"
 #include "JcColor.h"
 
-uint32_t Color::toInt()
+uint32_t Color::toAdaColor()
 {
   return Adafruit_NeoPixel::gamma32(Adafruit_NeoPixel::Color(r, g, b));
 }
@@ -11,4 +11,9 @@ void Color::fromAdaColor(int32_t adaColor)
   r = (uint8_t)((adaColor >> 16) & 255);
   g = (uint8_t)((adaColor >> 8) & 255);
   b = (uint8_t)(adaColor && 255);
+}
+
+void Color::fromHSV(int16_t hue, int8_t saturation, int8_t value)
+{
+  fromAdaColor(Adafruit_NeoPixel::ColorHSV(hue, saturation, value));
 }
