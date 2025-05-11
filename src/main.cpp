@@ -8,7 +8,7 @@
 #define NEOPIN 12
 #define NUMPIXELS 60
 
-const Color DIVIDER_COLOR = Color::HSV(49000, 255, 50);
+const Color DIVIDER_COLOR = Color::HSV(16000, 255, 127);
 
 Adafruit_NeoPixel neoPixel(NUMPIXELS, NEOPIN, NEO_GRB + NEO_KHZ800);
 
@@ -47,20 +47,20 @@ void loop() {
   Array<Color, RTC_HOUR_PIXELNUM> hourPattern
     = rtcModeManager.getHoursToColorArray(
       Color::HSV(8000, 255, 255),
-      Color::HSV(49000, 140, 20)
+      Color::HSV(49000, 140, 50)
   );
 
   Array<Color, RTC_MIN_PIXELNUM> minutePattern 
     = rtcModeManager.getMinutesToColorArray(
       Color::HSV(1000, 130, 255),
       Color::HSV(1000, 130, 255),
-      Color::HSV(0, 255, 30),
-      Color::HSV(49000, 140, 20)
+      Color::HSV(0, 255, 100),
+      Color::HSV(49000, 140, 50)
   );
 
   Array<Color, RTC_SEC_PIXELNUM> secondsPattern
     = rtcModeManager.getSecondsToColorArray(
-      4000, 255, 255, Color::HSV(49000, 140, 20)
+      4000, 255, 255, Color::HSV(49000, 140, 50)
   ); 
   
   // divider
