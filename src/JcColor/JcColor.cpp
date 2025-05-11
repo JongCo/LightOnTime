@@ -4,8 +4,8 @@
 Color Color::operator+(const Color& other) const
 {
   uint16_t resultR = r + other.r;
-  uint16_t resultG = r + other.r;
-  uint16_t resultB = r + other.r;
+  uint16_t resultG = g + other.g;
+  uint16_t resultB = b + other.b;
   
   resultR = resultR > 255 ? 255 : resultR;
   resultG = resultG > 255 ? 255 : resultG;
