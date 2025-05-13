@@ -81,9 +81,9 @@ uint32_t Color::toAdaColor() const
 
 void Color::fromAdaColor(uint32_t adaColor)
 {
-  r = (uint8_t)((adaColor >> 16) & 255) * 255;
-  g = (uint8_t)((adaColor >> 8) & 255) * 255;
-  b = (uint8_t)(adaColor & 255) * 255;
+  r = (uint8_t)((adaColor >> 16) & 255) * 256;
+  g = (uint8_t)((adaColor >> 8) & 255) * 256;
+  b = (uint8_t)(adaColor & 255) * 256;
 }
 
 void Color::fromHSV(int16_t hue, int8_t saturation, int8_t value)
@@ -98,15 +98,15 @@ void Color::fromRGB24(int8_t r, int8_t g, int8_t b)
 
 uint8_t Color::getR() const
 {
-  return r/255;
+  return r/256;
 }
 
 uint8_t Color::getG() const
 {
-  return g/255;
+  return g/256;
 }
 
 uint8_t Color::getB() const
 {
-  return b/255;
+  return b/256;
 }
