@@ -2,12 +2,21 @@
 #include "Arduino.h"
 
 struct Color{
-  uint8_t r;
-  uint8_t g;
-  uint8_t b;
+  uint16_t r;
+  uint16_t g;
+  uint16_t b;
 
   Color operator+(const Color& other) const;
   Color operator*(float scalar) const;
+
+  uint32_t toAdaColor() const;
+  void fromAdaColor(uint32_t adaColor);
+  void fromHSV(int16_t hue, int8_t saturation, int8_t value);
+  void fromRGB24(int8_t r8, int8_t g8, int8_t b8);
+
+  uint8_t getR() const;
+  uint8_t getG() const;
+  uint8_t getB() const;
 
   static Color FromRGB(uint8_t r, uint8_t g, uint8_t b);
   static Color FromAdaColor(int32_t adaColor);
@@ -15,9 +24,6 @@ struct Color{
 
   static Color lerp(const Color& a, const Color& b, float t);
 
-  uint32_t toAdaColor() const;
-  void fromAdaColor(uint32_t adaColor);
-  void fromHSV(int16_t hue, int8_t saturation, int8_t value);
 };
 
 static const uint8_t PROGMEM _adjustedGamma22Table[256] = {

@@ -49,7 +49,7 @@ void loop() {
   Array<Color, RTC_HOUR_PIXELNUM> hourPattern
     = rtcModeManager.getHoursToColorArray(
       Color::FromHSV(8000, 255, 255),
-      Color::FromHSV(49000, 140, 50)
+      Color::FromHSV(49000, 190, 120)
   );
 
   Array<Color, RTC_MIN_PIXELNUM> minutePattern 
@@ -57,12 +57,12 @@ void loop() {
       Color::FromHSV(1000, 130, 255),
       Color::FromHSV(1000, 130, 255),
       Color::FromHSV(0, 255, 100),
-      Color::FromHSV(49000, 140, 50)
+      Color::FromHSV(49000, 190, 120)
   );
 
   Array<Color, RTC_SEC_PIXELNUM> secondsPattern
     = rtcModeManager.getSecondsToColorArray(
-      4000, 255, 255, Color::FromHSV(49000, 140, 50)
+      4000, 255, 255, Color::FromHSV(49000, 190, 120)
   ); 
   
   // divider
@@ -127,6 +127,6 @@ void nextPixel(uint8_t* indexRef, bool isReverseMode) {
 void transitColor(Color *currentColors, Color *targetColors)
 {
   for(size_t i = 0; i < NUMPIXELS; i++) {
-    currentColors[i] = Color::lerp(currentColors[i], targetColors[i], 0.1f);
+    currentColors[i] = Color::lerp(currentColors[i], targetColors[i], 0.05f);
   }
 }
