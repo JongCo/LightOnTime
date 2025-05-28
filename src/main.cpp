@@ -4,6 +4,7 @@
 #include "Array.h"
 #include "RTCModeManager/RTCModeManager.h"
 #include "JcColor/JcColor.h"
+#include "Button/Button.h"
 
 #define NEOPIN 12
 #define NUMPIXELS 60
@@ -18,6 +19,7 @@ Color colors[60];
 Color targetColors[60];
 
 RTCModeManager rtcModeManager;
+Button button;
 
 bool isReverseMode = true;
 
@@ -34,9 +36,11 @@ void setup() {
   Serial.begin(9600);
 
   rtcModeManager.init();
+  button.start({{8, 255, 255, 255, 255, 255, 255, 255}});
 }
 
 void loop() {
+  button.update();
   neoPixel.clear();
 
   uint8_t pixelPlace;
