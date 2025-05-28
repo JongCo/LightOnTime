@@ -28,7 +28,7 @@ void transitColor(Color* currentColors, Color* targetColors);
 
 // brightnessControl
 uint8_t brightnessMode = 0;
-float brightnessModeValues[] = {0.4f, 0.6f, 0.8f, 1.0f};
+float brightnessModeValues[] = {1.0f, 0.8f, 0.6f, 0.4f};
 
 void setup() {
   neoPixel.begin();
