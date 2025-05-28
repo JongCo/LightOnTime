@@ -26,6 +26,10 @@ bool isReverseMode = true;
 void nextPixel(uint8_t* indexRef, bool isReverseMode);
 void transitColor(Color* currentColors, Color* targetColors);
 
+// brightnessControl
+uint8_t brightnessMode = 0;
+float brightnessModeValues[] = {0.4f, 0.6f, 0.8f, 1.0f};
+
 void setup() {
   neoPixel.begin();
   neoPixel.show();
@@ -41,6 +45,11 @@ void setup() {
 
 void loop() {
   button.update();
+  if(button.getButtonDown(0)) {
+    brightnessMode++;
+    brightnessMode = brightnessMode >= 4 ? 0 : brightnessMode;
+  }
+  
   neoPixel.clear();
 
   uint8_t pixelPlace;
@@ -110,6 +119,10 @@ void loop() {
   targetColors[pixelPlace] = DIVIDER_COLOR;
   nextPixel(&pixelPlace, isReverseMode);
 
+  // brightnessControl
+  for (size_t i = 0; i < NUMPIXELS; i++) {
+    targetColors[i] = targetColors[i] * brightnessModeValues[brightnessMode];
+  }
 
   transitColor(colors, targetColors);
   for (size_t i = 0; i < NUMPIXELS; i++) {
