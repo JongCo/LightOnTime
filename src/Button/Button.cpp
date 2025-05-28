@@ -1,5 +1,11 @@
 #include "Button.h"
 
+/**
+ * @brief Initialize Button
+ * 
+ * @param pins An array of up to 8 pin numbers representing buttons.  
+ *             Each element should be a valid GPIO pin number or 255 to indicate an unused button slot.
+ */
 void Button::start(Array<uint8_t, 8> pins)
 {
     pressed = 0;
